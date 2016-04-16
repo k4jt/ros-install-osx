@@ -161,7 +161,9 @@ do_install()
 
   # Parallel build.
   catkin config --install  --install-space ${ROS_INSTALL_DIR}
-  catkin build \
+  # During building I have problem with pcl* stuff, so just remove it from ${WS}.rosinstall file and src/
+  
+  sudo catkin build \
     -DCMAKE_BUILD_TYPE=Release \
     -DPYTHON_LIBRARY=$(python -c "import sys; print sys.prefix")/lib/libpython2.7.dylib \
     -DPYTHON_INCLUDE_DIR=$(python -c "import sys; print sys.prefix")/include/python2.7
